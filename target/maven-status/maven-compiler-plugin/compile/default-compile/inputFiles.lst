@@ -1,7 +1,15 @@
-/home/igor-soares/Downloads/Treinamento JAVA/Treinamento/src/main/java/br/com/solinftec/Treinamento/dto/GetAllCooperativaDto.java
-/home/igor-soares/Downloads/Treinamento JAVA/Treinamento/src/main/java/br/com/solinftec/Treinamento/TreinamentoApplication.java
-/home/igor-soares/Downloads/Treinamento JAVA/Treinamento/src/main/java/br/com/solinftec/Treinamento/resource/CooperativaResource.java
-/home/igor-soares/Downloads/Treinamento JAVA/Treinamento/src/main/java/br/com/solinftec/Treinamento/model/Fazendeiro.java
-/home/igor-soares/Downloads/Treinamento JAVA/Treinamento/src/main/java/br/com/solinftec/Treinamento/model/Cooperativa.java
-/home/igor-soares/Downloads/Treinamento JAVA/Treinamento/src/main/java/br/com/solinftec/Treinamento/service/CooperativaService.java
-/home/igor-soares/Downloads/Treinamento JAVA/Treinamento/src/main/java/br/com/solinftec/Treinamento/repository/CooperativaRepository.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/resource/FazendaResource.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/model/Fazendeiro.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/dto/SaveCooperativaDto.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/service/FazendeiroService.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/repository/FazendeiroRepository.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/model/Fazenda.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/dto/SaveFazendaDto.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/TreinamentoApplication.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/dto/GetAllCooperativaDto.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/model/Cooperativa.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/resource/CooperativaResource.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/service/FazendaService.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/repository/FazendaRepository.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/service/CooperativaService.java
+/home/igor-soares/Área de Trabalho/TRAINEE/JavaSpring/spring_training_cooperative/src/main/java/br/com/solinftec/Treinamento/repository/CooperativaRepository.java

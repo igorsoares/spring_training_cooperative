@@ -1,7 +1,15 @@
+br/com/solinftec/Treinamento/dto/SaveFazendaDto.class
 br/com/solinftec/Treinamento/TreinamentoApplication.class
 br/com/solinftec/Treinamento/resource/CooperativaResource.class
+br/com/solinftec/Treinamento/service/FazendaService.class
 br/com/solinftec/Treinamento/dto/GetAllCooperativaDto.class
-br/com/solinftec/Treinamento/model/Cooperativa.class
+br/com/solinftec/Treinamento/dto/SaveCooperativaDto.class
 br/com/solinftec/Treinamento/repository/CooperativaRepository.class
-br/com/solinftec/Treinamento/service/CooperativaService.class
 br/com/solinftec/Treinamento/model/Fazendeiro.class
+br/com/solinftec/Treinamento/repository/FazendeiroRepository.class
+br/com/solinftec/Treinamento/service/FazendeiroService.class
+br/com/solinftec/Treinamento/repository/FazendaRepository.class
+br/com/solinftec/Treinamento/model/Cooperativa.class
+br/com/solinftec/Treinamento/model/Fazenda.class
+br/com/solinftec/Treinamento/service/CooperativaService.class
+br/com/solinftec/Treinamento/resource/FazendaResource.class
