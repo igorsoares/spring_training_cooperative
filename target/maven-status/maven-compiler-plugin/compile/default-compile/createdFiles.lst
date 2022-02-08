@@ -1,0 +1,7 @@
+br/com/solinftec/Treinamento/TreinamentoApplication.class
+br/com/solinftec/Treinamento/resource/CooperativaResource.class
+br/com/solinftec/Treinamento/dto/GetAllCooperativaDto.class
+br/com/solinftec/Treinamento/model/Cooperativa.class
+br/com/solinftec/Treinamento/repository/CooperativaRepository.class
+br/com/solinftec/Treinamento/service/CooperativaService.class
+br/com/solinftec/Treinamento/model/Fazendeiro.class
