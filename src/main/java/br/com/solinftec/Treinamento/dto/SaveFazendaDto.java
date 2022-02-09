@@ -1,17 +1,9 @@
 package br.com.solinftec.Treinamento.dto;
 
-import java.util.Optional;
-
-import javax.annotation.PostConstruct;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.solinftec.Treinamento.model.Fazenda;
-import br.com.solinftec.Treinamento.model.Fazendeiro;
-import br.com.solinftec.Treinamento.service.FazendeiroService;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @Data
 // @RequiredArgsConstructor

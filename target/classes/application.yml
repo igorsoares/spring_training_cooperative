@@ -12,15 +12,18 @@ spring:
       on-profile: development
   datasource:
     driverClassName: org.postgresql.Driver
-    url: ${DB_URL:jdbc:postgresql://localhost:9999/curso}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/curso}
     username: ${USERNAME_DEV:postgres}
-    password: ${PASSWORD_DEV:postgres}
+    password: ${PASSWORD_DEV:password}
     hikari: #Auxilia a demanda e concorrência das conexões
       connection-timeout: 30000
       idle-timeout: 600000
       max-lifetime: 1800000
       minimum-idle: 1
       maximum-pool-size: 3
+  jpa:
+    hibernate:
+      ddl-auto: create
 ---
 spring:
   config:
