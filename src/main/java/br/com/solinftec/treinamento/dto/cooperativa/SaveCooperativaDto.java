@@ -8,13 +8,19 @@ import javax.validation.constraints.NotNull;
 
 import br.com.solinftec.treinamento.model.Cooperativa;
 import br.com.solinftec.treinamento.model.Fazendeiro;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
+@Data
+@Slf4j
 public class SaveCooperativaDto {
     private Long id;
     @NotNull(message = "NOME_CANNOT_BE_NULL")
     private String nome;
     @Email(message = "EMAIL_CANNOT_BE_NULL")
     private String email;
+    @NotNull(message = "LOGRADOURO_CANNOT_BE_NULL")
+    private String logradouro;
     private List<Long> fazendeiros;
 
     public Cooperativa pegarModel() {
@@ -23,32 +29,10 @@ public class SaveCooperativaDto {
         coop.setNome(this.nome);
         coop.setEmail(this.email);
         coop.setId(null);
+        coop.setLogradouro(this.logradouro);
+        log.info(">>>>>>>> FAZENDEIROS: {}", this.fazendeiros);
         coop.setFazendeiros(this.fazendeiros.stream().map(Fazendeiro::new).collect(Collectors.toList()));
         return coop;
 
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import br.com.solinftec.treinamento.configuration.TreinamentoDefaultException;
 import br.com.solinftec.treinamento.dto.fazenda.FazendaWithFazendeiroDto;
 import br.com.solinftec.treinamento.model.Fazenda;
 import br.com.solinftec.treinamento.model.Fazendeiro;
@@ -31,6 +32,12 @@ public class FazendaService {
         } else {
             throw new Exception("FAZENDA_NOT_FOUND");
         }
+    }
+
+    public Fazenda getModelById(Long idFazenda) throws TreinamentoDefaultException {
+        return this.fazendaRepository.findById(
+                idFazenda)
+                .orElseThrow(() -> new TreinamentoDefaultException("FAZENDA_NOT_FOUND"));
     }
 
     public FazendaWithFazendeiroDto saveFazenda(FazendaWithFazendeiroDto fazendaDto) throws Exception {

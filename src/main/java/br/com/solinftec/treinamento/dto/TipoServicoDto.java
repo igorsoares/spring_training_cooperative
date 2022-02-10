@@ -13,6 +13,10 @@ public class TipoServicoDto {
     @NotNull(message = "DESCRICAO_CANT_BE_NULL")
     private String descricao;
 
+    public TipoServicoDto() {
+
+    }
+
     public TipoServicoDto(TipoServico tipoServicoModel) {
         this.id = tipoServicoModel.getId();
         this.descricao = tipoServicoModel.getDescricao();

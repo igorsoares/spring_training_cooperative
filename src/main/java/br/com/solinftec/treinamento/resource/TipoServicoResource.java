@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.solinftec.treinamento.configuration.TreinamentoDefaultException;
 import br.com.solinftec.treinamento.dto.TipoServicoDto;
 import br.com.solinftec.treinamento.service.TipoServicoService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/tiposervico/")
+@RequestMapping("/tiposervico")
 public class TipoServicoResource {
 
     private final TipoServicoService service;
@@ -47,12 +48,9 @@ public class TipoServicoResource {
 
     @PostMapping
     public ResponseEntity<TipoServicoDto> postTipoServico(
-            @RequestBody @Valid TipoServicoDto tipoServicoDto) {
-        try {
-            return ResponseEntity.ok().body(this.service.save(tipoServicoDto));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
+            @RequestBody @Valid TipoServicoDto tipoServicoDto) throws TreinamentoDefaultException {
+        return ResponseEntity.ok().body(this.service.save(tipoServicoDto));
+
     }
 
     @DeleteMapping("/{idServico}")

@@ -1,7 +1,8 @@
 package br.com.solinftec.treinamento.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrdemServico {
+public class OrdemServicoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,9 +44,16 @@ public class OrdemServico {
     private Produto produto;
 
     @ManyToOne
-    @JoinColumn(name = "TIPO_SERVICO")
-    private TipoServico tipoServico;
+    @JoinColumn(name = "ID_TIPO_SERVICO")
+    private TipoServico tipo_servico;
 
     @UpdateTimestamp
-    private LocalDateTime data_execucao;
+    private Date data_execucao;
+
+    @Column(name = "RATE_APLICACAO")
+    private Double rate_aplicacao;
+
+    @Column(name = "TOTAL_APLICACAO")
+    private Double total_aplicacao;
+
 }

@@ -5,10 +5,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.stereotype.Service;
 
+import br.com.solinftec.treinamento.configuration.TreinamentoDefaultException;
 import br.com.solinftec.treinamento.dto.cooperativa.GetAllCooperativaDto;
 import br.com.solinftec.treinamento.dto.cooperativa.SaveCooperativaDto;
 import br.com.solinftec.treinamento.model.Cooperativa;
@@ -23,13 +22,16 @@ public class CooperativaService {
 
     private final CooperativaRepository cooperativaRepository;
 
-    // public CooperativaService(CooperativaRepository cooperativaRepository) {
-    // this.cooperativaRepository = cooperativaRepository;
-    // }
+    public GetAllCooperativaDto getById(Long idCooperativa) throws TreinamentoDefaultException {
+        Cooperativa coopModel = this.cooperativaRepository.findById(idCooperativa)
+                .orElseThrow(() -> new TreinamentoDefaultException("COOPERATIVA_NOT_FOUND"));
+        return new GetAllCooperativaDto(coopModel);
+    }
 
-    @PostConstruct
-    public void init() {
-        System.out.println(cooperativaRepository);
+    public Cooperativa getModelById(Long idCooperativa) throws TreinamentoDefaultException {
+        return this.cooperativaRepository.findById(idCooperativa)
+                .orElseThrow(() -> new TreinamentoDefaultException("COOPERATIVA_NOT_FOUND"));
+
     }
 
     public List<Fazendeiro> getFazendeirosDaCooperativa(Long idCooperativa) {

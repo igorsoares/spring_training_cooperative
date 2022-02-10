@@ -8,11 +8,13 @@ public class GetAllCooperativaDto {
     private Long id;
     private String nome;
     private String email;
+    private String logradouro;
 
     public GetAllCooperativaDto(Cooperativa cooperativa) {
         this.id = cooperativa.getId();
         this.nome = cooperativa.getNome();
         this.email = cooperativa.getEmail();
+        this.logradouro = cooperativa.getLogradouro();
     }
 
     public Long getId() {

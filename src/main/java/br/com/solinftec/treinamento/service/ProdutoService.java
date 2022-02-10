@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import br.com.solinftec.treinamento.configuration.TreinamentoDefaultException;
 import br.com.solinftec.treinamento.dto.ProdutoDto;
 import br.com.solinftec.treinamento.model.Produto;
 import br.com.solinftec.treinamento.repository.ProdutoRepository;
@@ -16,12 +17,20 @@ import lombok.RequiredArgsConstructor;
 public class ProdutoService {
     private final ProdutoRepository produtoRepository;
 
-    public ProdutoDto getById(Long idProduto) throws Exception {
+    private static final String MSG_NOT_FOUND = "PRODUTO_NOT_FOUND";
+
+    public ProdutoDto getById(Long idProduto) throws TreinamentoDefaultException {
         Optional<Produto> optProduto = produtoRepository.findById(idProduto);
         if (optProduto.isPresent()) {
             return new ProdutoDto(optProduto.get());
         }
-        throw new Exception("PRODUTO_NOT_FOUND");
+        throw new TreinamentoDefaultException(MSG_NOT_FOUND);
+    }
+
+    public Produto getModelById(Long idProduto) throws TreinamentoDefaultException {
+        return this.produtoRepository.findById(
+                idProduto)
+                .orElseThrow(() -> new TreinamentoDefaultException(MSG_NOT_FOUND));
     }
 
     public List<ProdutoDto> getAll() {
@@ -34,7 +43,7 @@ public class ProdutoService {
         if (optProduto.isPresent()) {
             this.produtoRepository.delete(optProduto.get());
         } else
-            throw new Exception("PRODUTO_NOT_FOUND");
+            throw new Exception(MSG_NOT_FOUND);
     }
 
     public ProdutoDto saveProduto(ProdutoDto produtoDto) throws Exception {

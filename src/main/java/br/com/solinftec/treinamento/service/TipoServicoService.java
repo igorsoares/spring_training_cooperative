@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
+import br.com.solinftec.treinamento.configuration.TreinamentoDefaultException;
 import br.com.solinftec.treinamento.dto.TipoServicoDto;
 import br.com.solinftec.treinamento.model.TipoServico;
 import br.com.solinftec.treinamento.repository.TipoServicoRepository;
@@ -26,11 +27,17 @@ public class TipoServicoService {
         throw new Exception("TIPO_SERVICO_NOT_FOUND");
     }
 
-    public TipoServicoDto save(@Valid TipoServicoDto tipoServicoDto) throws Exception {
+    public TipoServico getModelById(Long idTipo) throws TreinamentoDefaultException {
+        return this.tipoServicoRepository.findById(
+                idTipo)
+                .orElseThrow(() -> new TreinamentoDefaultException("TIPO_SERVICE_NOT_FOUND"));
+    }
+
+    public TipoServicoDto save(@Valid TipoServicoDto tipoServicoDto) throws TreinamentoDefaultException {
         try {
             return new TipoServicoDto(tipoServicoRepository.save(tipoServicoDto.getModel()));
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
+            throw new TreinamentoDefaultException(e.getMessage());
         }
     }
 

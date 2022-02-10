@@ -2,6 +2,7 @@ package br.com.solinftec.treinamento.dto.fazenda;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.com.solinftec.treinamento.configuration.TreinamentoDefaultException;
 import br.com.solinftec.treinamento.model.Fazenda;
 import lombok.Data;
 
@@ -22,7 +23,7 @@ public class FazendaDto {
     }
 
     @JsonIgnore
-    public Fazenda getFazendaModel() throws Exception {
+    public Fazenda getFazendaModel() throws TreinamentoDefaultException {
         try {
             Fazenda fazenda = new Fazenda();
             fazenda.setId(this.id);
@@ -32,7 +33,7 @@ public class FazendaDto {
             fazenda.setArea(this.area);
             return fazenda;
         } catch (Exception e) {
-            throw new Exception(e.getMessage());
+            throw new TreinamentoDefaultException(e.getMessage());
         }
     }
 

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SaveEquipamentoDto {
+public class EquipamentoWithTipoIdDto {
     private Long id;
     private String descricao;
     private Double latitude;

@@ -27,4 +27,11 @@ public class FazendeiroResource {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    // @PostMapping
+    // public ResponseEntity<FazendeiroWithFazendaDto> saveFazendeiro(@RequestBody
+    // FazendeiroWithFazendaIdDto fazendeiro)
+    // throws TreinamentoDefaultException {
+    // return ResponseEntity.ok().body(this.service.saveFazendeiro(fazendeiro));
+    // }
 }

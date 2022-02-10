@@ -30,6 +30,9 @@ public class Cooperativa {
     @Column(name = "EMAIL")
     private String email;
 
+    @Column(name = "LOGRADOURO")
+    private String logradouro;
+
     @Column(name = "ATIVO")
     private Boolean ativo;
 

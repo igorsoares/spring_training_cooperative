@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import br.com.solinftec.treinamento.dto.equipamento.SaveEquipamentoDto;
+import br.com.solinftec.treinamento.configuration.TreinamentoDefaultException;
+import br.com.solinftec.treinamento.dto.equipamento.EquipamentoWithTipoDto;
+import br.com.solinftec.treinamento.dto.equipamento.EquipamentoWithTipoIdDto;
 import br.com.solinftec.treinamento.model.Equipamento;
 import br.com.solinftec.treinamento.repository.EquipamentoRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,27 +21,33 @@ public class EquipamentoService {
 
     private final EquipamentoRepository repository;
     private final TipoEquipamentoService tipoEquipamentoService;
+    private static final String MSG_NOT_FOUND = "EQUIPAMENTO_NOT_FOUND";
+    private static final String MSG_ALREADY_EXISTS = "EQUIPAMENTO_ALREADY_EXISTS";
 
     public List<Equipamento> getAll() {
-        // log.info("Obtendo todos os equipamentos.");
         return repository.findAll();
     }
 
-    public Equipamento getById(Long id) throws Exception {
+    public EquipamentoWithTipoDto getById(Long id) throws TreinamentoDefaultException {
         log.info("Obtendo o equipamentos.");
-        Optional<Equipamento> equipamentoOptional = Optional
-                .ofNullable(repository.findById(id).get());
-        if (equipamentoOptional.isPresent())
-            return equipamentoOptional.get();
-        throw new Exception("EQUIPAMENTO_NOT_FOUND");
+        Equipamento equipamentoModel = repository.findById(id)
+                .orElseThrow(() -> new TreinamentoDefaultException(MSG_NOT_FOUND));
+        return new EquipamentoWithTipoDto(equipamentoModel);
     }
 
-    public Equipamento save(SaveEquipamentoDto equipamento) throws Exception {
+    public Equipamento getModelById(Long idEquipamento) throws TreinamentoDefaultException {
+        Optional<Equipamento> optEquipamento = this.repository.findById(idEquipamento);
+        if (optEquipamento.isPresent())
+            return optEquipamento.get();
+        throw new TreinamentoDefaultException(MSG_NOT_FOUND);
+    }
+
+    public Equipamento save(EquipamentoWithTipoIdDto equipamento) throws Exception {
         try {
             Optional<Equipamento> tipoOptional = Optional
                     .ofNullable(repository.findByDescricao(equipamento.getDescricao()));
             if (tipoOptional.isPresent())
-                throw new Exception("EQUIPAMENTO_EXISTENTE");
+                throw new Exception(MSG_ALREADY_EXISTS);
             Equipamento equipamentoModel = equipamento.getModel();
             // Get tipoEquipamento
             equipamentoModel.setTipoEquipamento(this.tipoEquipamentoService.getById(equipamento.getTipoEquipamento()));
@@ -60,16 +68,23 @@ public class EquipamentoService {
 
     }
 
-    public Equipamento update(SaveEquipamentoDto equipamento) throws Exception {
-        Optional<Equipamento> optEquipamento = Optional
-                .ofNullable(repository.findById(equipamento.getId()).get());
+    public Equipamento update(EquipamentoWithTipoIdDto equipamento) throws TreinamentoDefaultException {
+        Optional<Equipamento> optEquipamento = repository.findById(equipamento.getId());
         if (optEquipamento.isPresent()) {
             Equipamento equipamentoModel = equipamento.getModel();
-            // Get tipoEquipamento
-            equipamentoModel.setTipoEquipamento(this.tipoEquipamentoService.getById(equipamento.getTipoEquipamento()));
             return repository.save(equipamentoModel);
         } else
-            throw new Exception("EQUIPAMENTO_NOT_FOUND");
+            throw new TreinamentoDefaultException(MSG_NOT_FOUND);
+    }
+
+    public Equipamento update(Equipamento equipamento) throws TreinamentoDefaultException {
+        // Essa função de polimorfismo é usada para atualizar o equipamento a partir de
+        // uma inserção de monitoramento.
+        Optional<Equipamento> optEquipamento = repository.findById(equipamento.getId());
+        if (optEquipamento.isPresent()) {
+            return repository.save(equipamento);
+        } else
+            throw new TreinamentoDefaultException(MSG_NOT_FOUND);
     }
 
 }
