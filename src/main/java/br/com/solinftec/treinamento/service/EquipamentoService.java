@@ -3,6 +3,7 @@ package br.com.solinftec.treinamento.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import br.com.solinftec.treinamento.configuration.TreinamentoDefaultException;
@@ -16,10 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-
+@Lazy
 public class EquipamentoService {
 
     private final EquipamentoRepository repository;
+
+    private MonitoramentoService monitoramentoService;
     private final TipoEquipamentoService tipoEquipamentoService;
     private static final String MSG_NOT_FOUND = "EQUIPAMENTO_NOT_FOUND";
     private static final String MSG_ALREADY_EXISTS = "EQUIPAMENTO_ALREADY_EXISTS";

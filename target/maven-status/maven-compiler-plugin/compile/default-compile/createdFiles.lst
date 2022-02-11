@@ -1,13 +1,13 @@
 br/com/solinftec/treinamento/model/TipoEquipamento.class
-br/com/solinftec/treinamento/model/Fazenda.class
 br/com/solinftec/treinamento/model/Cooperativa.class
+br/com/solinftec/treinamento/model/Fazenda.class
 br/com/solinftec/treinamento/service/FazendaService.class
 br/com/solinftec/treinamento/configuration/TreinamentoDefaultException.class
 br/com/solinftec/treinamento/resource/ProdutoResource.class
 br/com/solinftec/treinamento/repository/FazendeiroRepository.class
 br/com/solinftec/treinamento/resource/CooperativaResource.class
-br/com/solinftec/treinamento/dto/fazendeiro/FazendeiroDto.class
 br/com/solinftec/treinamento/dto/fazenda/FazendaWithFazendeiroDto.class
+br/com/solinftec/treinamento/dto/fazendeiro/FazendeiroDto.class
 br/com/solinftec/treinamento/service/ProdutoService.class
 br/com/solinftec/treinamento/model/TipoServico.class
 br/com/solinftec/treinamento/service/TipoEquipamentoService.class
@@ -41,8 +41,8 @@ br/com/solinftec/treinamento/dto/fazendeiro/FazendeiroWithFazendaDto.class
 br/com/solinftec/treinamento/model/Fazendeiro.class
 br/com/solinftec/treinamento/dto/monitoramento/MonitoramentoGetDto.class
 br/com/solinftec/treinamento/dto/cooperativa/SaveCooperativaDto.class
-br/com/solinftec/treinamento/service/TipoServicoService.class
 br/com/solinftec/treinamento/repository/FazendaRepository.class
+br/com/solinftec/treinamento/service/TipoServicoService.class
 br/com/solinftec/treinamento/dto/ordemServico/OrdemServicoDto.class
 br/com/solinftec/treinamento/repository/ProdutoRepository.class
 br/com/solinftec/treinamento/resource/equipamento/TipoEquipamentoResource.class

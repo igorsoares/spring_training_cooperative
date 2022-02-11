@@ -67,6 +67,7 @@ public class OrdemServicoService {
 
     public OrdemServicoDto saveOrdem(OrdemServicoDto ordem) throws TreinamentoDefaultException {
         OrdemServicoModel model = this.ordemServicoRepository.save(this.getModel(ordem));
+        model.setTotal_aplicacao(model.getFazenda().getArea() * model.getRate_aplicacao());
         return new OrdemServicoDto(model);
     }
 
