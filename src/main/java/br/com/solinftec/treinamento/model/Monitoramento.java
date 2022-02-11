@@ -2,7 +2,6 @@ package br.com.solinftec.treinamento.model;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,14 +31,14 @@ public class Monitoramento {
     @Column(name = "LONGITUDE")
     private Double longitude;
     @Column(name = "DATA_HORA")
+    @UpdateTimestamp
     private LocalDateTime data_hora;
 
     @ManyToOne
     @JoinColumn(name = "ID_EQUIPAMENTO")
     private Equipamento equipamento;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne
     @JoinColumn(name = "ID_ORDEM_SERVICO")
     private OrdemServicoModel ordemServico;
 

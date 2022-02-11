@@ -1,5 +1,6 @@
 package br.com.solinftec.treinamento.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +11,9 @@ import br.com.solinftec.treinamento.configuration.TreinamentoDefaultException;
 import br.com.solinftec.treinamento.dto.equipamento.EquipamentoWithTipoDto;
 import br.com.solinftec.treinamento.dto.equipamento.EquipamentoWithTipoIdDto;
 import br.com.solinftec.treinamento.model.Equipamento;
+import br.com.solinftec.treinamento.model.Monitoramento;
 import br.com.solinftec.treinamento.repository.EquipamentoRepository;
+import br.com.solinftec.treinamento.repository.MonitoramentoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +25,7 @@ public class EquipamentoService {
 
     private final EquipamentoRepository repository;
 
-    private MonitoramentoService monitoramentoService;
+    private final MonitoramentoRepository monitoramentoRepository;
     private final TipoEquipamentoService tipoEquipamentoService;
     private static final String MSG_NOT_FOUND = "EQUIPAMENTO_NOT_FOUND";
     private static final String MSG_ALREADY_EXISTS = "EQUIPAMENTO_ALREADY_EXISTS";
@@ -31,10 +34,26 @@ public class EquipamentoService {
         return repository.findAll();
     }
 
+    public boolean equipamentoAtivo(Long idEquipamento) throws TreinamentoDefaultException {
+        Optional<Monitoramento> monitoramentoOpt = monitoramentoRepository
+                .findMonitoramentoByEquipamentoId(idEquipamento);
+        if (monitoramentoOpt.isPresent()) {
+            Monitoramento model = monitoramentoOpt.get();
+            LocalDateTime nowSubtracted = LocalDateTime.now().minusMinutes(15);
+            Integer resultCompare = model.getData_hora().compareTo(nowSubtracted);
+            if (resultCompare > 0)
+                return true;
+        }
+        return false;
+    }
+
     public EquipamentoWithTipoDto getById(Long id) throws TreinamentoDefaultException {
         log.info("Obtendo o equipamentos.");
         Equipamento equipamentoModel = repository.findById(id)
                 .orElseThrow(() -> new TreinamentoDefaultException(MSG_NOT_FOUND));
+        equipamentoModel.setAtivo(this.equipamentoAtivo(id));
+        this.update(equipamentoModel);
+
         return new EquipamentoWithTipoDto(equipamentoModel);
     }
 

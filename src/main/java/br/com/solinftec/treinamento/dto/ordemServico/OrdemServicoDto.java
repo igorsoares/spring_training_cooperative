@@ -9,22 +9,6 @@ import lombok.Data;
 
 @Data
 public class OrdemServicoDto {
-    public OrdemServicoDto(OrdemServicoModel ordemModel) {
-        this.id = ordemModel.getId();
-        this.cooperativa = ordemModel.getCooperativa().getId();
-        this.fazenda = ordemModel.getFazenda().getId();
-        this.equipamento = ordemModel.getEquipamento().getId();
-        this.produto = ordemModel.getProduto().getId();
-        this.tipoServico = ordemModel.getTipo_servico().getId();
-        this.rate_aplicacao = ordemModel.getRate_aplicacao();
-        this.total_aplicacao = ordemModel.getTotal_aplicacao();
-        this.data_execucao = ordemModel.getData_execucao();
-    }
-
-    public OrdemServicoDto() {
-
-    }
-
     private Long id;
     @NotNull(message = "IDCOOPERATIVA_CANT_BE_NULL")
     private Long cooperativa;
@@ -42,4 +26,19 @@ public class OrdemServicoDto {
     private Double rate_aplicacao;
     private Double total_aplicacao;
 
+    public OrdemServicoDto(OrdemServicoModel ordemModel) {
+        this.id = ordemModel.getId();
+        this.cooperativa = ordemModel.getCooperativa().getId();
+        this.fazenda = ordemModel.getFazenda().getId();
+        this.equipamento = ordemModel.getEquipamento().getId();
+        this.produto = ordemModel.getProduto().getId();
+        this.tipoServico = ordemModel.getTipo_servico().getId();
+        this.rate_aplicacao = ordemModel.getRate_aplicacao();
+        this.total_aplicacao = ordemModel.getTotal_aplicacao();
+        this.data_execucao = ordemModel.getData_execucao();
+    }
+
+    public OrdemServicoDto() {
+
+    }
 }

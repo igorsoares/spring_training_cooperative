@@ -30,7 +30,6 @@ public class SaveCooperativaDto {
         coop.setEmail(this.email);
         coop.setId(null);
         coop.setLogradouro(this.logradouro);
-        log.info(">>>>>>>> FAZENDEIROS: {}", this.fazendeiros);
         coop.setFazendeiros(this.fazendeiros.stream().map(Fazendeiro::new).collect(Collectors.toList()));
         return coop;
 
